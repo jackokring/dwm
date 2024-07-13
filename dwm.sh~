@@ -1,5 +1,0 @@
-#!/usr/bin/bash
-# execute dwn loading options
-
-# load dwm
-dwm&
