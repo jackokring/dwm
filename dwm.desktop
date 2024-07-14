@@ -1,7 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Name=dwm
-Comment=Dynamic window manager
-Exec=sh -c "\$HOME/bin/dwm.sh||loginctl terminate-session"
-Icon=
-Type=XSession
