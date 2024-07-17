@@ -54,14 +54,14 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+#define SHCMD(cmd) { .v = (const char*[]){ "/bin/bash", "-c", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *roficmd[]  = { "rofi", "-show", "combi", NULL };
-static const char *googlecmd[]= { "google-chrome", NULL };
+static const char *googlecmd[]= { "google-chrome", NULL };//nmtui for net
 static const char *gimpcmd[]  = { "gimp", NULL };
 static const char *emacscmd[] = { "emacs", "~", NULL };
 
@@ -70,8 +70,8 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,	                XK_r,      spawn,          {.v = roficmd } },
-	{ MODKEY,	                XK_g,      spawn,          {.v = googlecmd } },
-	{ MODKEY|ShiftMask,	        XK_g,      spawn,          {.v = gimpcmd } },
+	{ MODKEY,	                XK_c,      spawn,          {.v = googlecmd } },// no shift c
+	{ MODKEY,		        XK_g,      spawn,          {.v = gimpcmd } },// no shift g
 	{ MODKEY,                       XK_e,      spawn,          {.v = emacscmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
