@@ -66,7 +66,8 @@ static const char *gimpcmd[]  = { "gimp", NULL };
 static const char *emacscmd[] = { "emacs", "~", NULL };
 
 static const Key keys[] = {
-	// anosuvwxyz
+	// anosvwxyz
+	// Mu via M-u emacs
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,	                XK_r,      spawn,          {.v = roficmd } },
