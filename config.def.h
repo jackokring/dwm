@@ -33,7 +33,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      		instance    title       tags mask     isfloating   monitor */ //on tag <<
-	{ "Gimp",     		NULL,       NULL,       1 << 2,       0,           -1 },	//3
+	{ "Gimp",     		    NULL,       NULL,       1 << 2,       0,           -1 },	//3
 	{ "Google-chrome",   	NULL,       NULL,       1 << 6,       0,           -1 },	//7
 };
 
@@ -52,16 +52,16 @@ static const Layout layouts[] = {
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 	{ "[@]",      spiral },
-	{ "[\\]",     dwindle },
-	{ "H[]",      deck },
-	{ "TTT",      bstack },
-	{ "===",      bstackhoriz },
 	{ "HHH",      grid },
-	{ "###",      nrowgrid },
-	{ "---",      horizgrid },
-	{ ":::",      gaplessgrid },
-	{ "|M|",      centeredmaster },
-	{ ">M>",      centeredfloatingmaster },
+	{ "[\\]",     dwindle },
+	//{ "H[]",      deck },
+	//{ "TTT",      bstack },
+	//{ "===",      bstackhoriz },
+	//{ "###",      nrowgrid },
+	//{ "---",      horizgrid },
+	//{ ":::",      gaplessgrid },
+	//{ "|M|",      centeredmaster },
+	//{ ">M>",      centeredfloatingmaster },
 	{ NULL,       NULL },
 };
 
@@ -83,18 +83,24 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *roficmd[]  = { "rofi", "-show", "combi", NULL };
 static const char *googlecmd[]= { "google-chrome", NULL };//nmtui for net
 static const char *gimpcmd[]  = { "gimp", NULL };
-static const char *nvimcmd[] = { "st", "nvim", NULL };
+static const char *nvimcmd[]  = { "st", "nvim", NULL };
 
 #include "movestack.c"
 static const Key keys[] = {
-	// anosvwxyz
+	// anovxyz
 	// Mu via M-u emacs
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,	                XK_r,      spawn,          {.v = roficmd } },
-	{ MODKEY,	                XK_c,      spawn,          {.v = googlecmd } },// no shift c
-	{ MODKEY,		        XK_g,      spawn,          {.v = gimpcmd } },// no shift g
+    // program
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = dmenucmd } },
+    // launch rofi show -combi
+	{ MODKEY,	                    XK_p,      spawn,          {.v = roficmd } },
+    // chrome
+	{ MODKEY,	                    XK_c,      spawn,          {.v = googlecmd } },// no shift c
+    // gimp
+	{ MODKEY,		                XK_g,      spawn,          {.v = gimpcmd } },
+    // vim in a term
 	{ MODKEY,                       XK_v,      spawn,          {.v = nvimcmd } },
+    // terminal
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -130,6 +136,9 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_s,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY,                       XK_r,      setlayout,      {.v = &layouts[4]} },
+	{ MODKEY,                       XK_w,      setlayout,      {.v = &layouts[5]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
